@@ -4,18 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to My Test Site</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
             padding: 0;
-            background: linear-gradient(-45deg, #1a0000, #300, #600, #900);
+            background: linear-gradient(-45deg, #000714, #001233, #002466, #0039a6);
             background-size: 400% 400%;
             animation: gradient 15s ease infinite;
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Orbitron', sans-serif;
             overflow: hidden;
             position: relative;
         }
@@ -35,7 +36,7 @@
         }
 
         .intro-text {
-            color: #ff0000;
+            color: #00ffff;
             font-size: 3em;
             text-transform: uppercase;
             letter-spacing: 15px;
@@ -55,13 +56,13 @@
         }
 
         .intro-text::before {
-            color: #0ff;
+            color: #00ffff;
             animation: glitch-anim 2s infinite linear alternate-reverse;
             left: 2px;
         }
 
         .intro-text::after {
-            color: #f0f;
+            color: #0066ff;
             animation: glitch-anim2 2s infinite linear alternate-reverse;
             left: -2px;
         }
@@ -181,9 +182,11 @@
             font-size: 4em;
             margin: 0;
             padding: 0;
-            text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
+            text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
             animation: glow 2s ease-in-out infinite alternate, textFloat 3s ease-in-out infinite;
             position: relative;
+            letter-spacing: 2px;
+            color: #ffffff;
         }
 
         h1::before {
@@ -193,10 +196,21 @@
             left: 0;
             width: 100%;
             height: 100%;
-            color: #ff0000;
+            color: #00ffff;
             filter: blur(15px);
             opacity: 0.5;
             animation: glowPulse 2s infinite alternate;
+        }
+
+        h1::after {
+            content: 'Welcome to My Site';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            mix-blend-mode: difference;
+            animation: glitch-anim 5s infinite linear alternate-reverse;
         }
 
         @keyframes glowPulse {
@@ -222,11 +236,24 @@
         .subtitle {
             font-size: 1.5em;
             margin-top: 20px;
-            color: #ff3333;
+            color: #00ccff;
             position: relative;
             animation: subtitleSlide 1s forwards 5.5s, subtitleGlow 3s infinite alternate;
             opacity: 0;
             transform: translateX(-50px);
+            letter-spacing: 3px;
+        }
+
+        .subtitle::before {
+            background: #00ccff;
+            box-shadow: 0 0 10px #00ffff;
+        }
+
+        @keyframes underlineExpand {
+            to {
+                width: 100%;
+                box-shadow: 0 0 10px #ff3333;
+            }
         }
 
         @keyframes subtitleSlide {
@@ -238,10 +265,10 @@
 
         @keyframes subtitleGlow {
             from {
-                text-shadow: 0 0 5px #ff3333, 0 0 10px #ff3333;
+                text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff;
             }
             to {
-                text-shadow: 0 0 10px #ff3333, 0 0 20px #ff3333, 0 0 30px #ff3333;
+                text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff;
             }
         }
 
@@ -296,12 +323,153 @@
             pointer-events: none;
             z-index: 1;
         }
+
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: linear-gradient(to right, #00ffff, #0066ff);
+            box-shadow: 0 0 10px #00ffff;
+            border-radius: 50%;
+            animation: particleFloat 20s infinite linear;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) scale(1);
+                opacity: 0;
+            }
+        }
+
+        .cyber-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(transparent 95%, rgba(0, 255, 255, 0.1) 95%),
+                linear-gradient(90deg, transparent 95%, rgba(0, 255, 255, 0.1) 95%);
+            background-size: 50px 50px;
+            pointer-events: none;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .neon-lines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .neon-line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, #00ffff, transparent);
+            height: 1px;
+            width: 100%;
+            opacity: 0;
+            animation: neonLine 8s infinite;
+        }
+
+        @keyframes neonLine {
+            0% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+
+        .energy-field {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle at center, 
+                rgba(0, 255, 255, 0.1) 0%,
+                transparent 70%);
+            animation: pulseField 4s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes pulseField {
+            0%, 100% {
+                opacity: 0.3;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% {
+                opacity: 0.5;
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+        }
+
+        .digital-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .rain-column {
+            position: absolute;
+            top: -20px;
+            color: #00ffff;
+            font-size: 14px;
+            animation: digitalRain 10s infinite linear;
+            opacity: 0.5;
+        }
+
+        @keyframes digitalRain {
+            to {
+                transform: translateY(100vh);
+            }
+        }
     </style>
 </head>
 <body>
     <div class="intro-overlay">
         <div class="intro-text">INITIALIZING</div>
     </div>
+
+    <div class="cyber-grid"></div>
+    <div class="particles" id="particles"></div>
+    <div class="scanline"></div>
+    <div class="vignette"></div>
 
     <div class="container">
         <h1>Welcome to My Site</h1>
@@ -336,6 +504,33 @@
         }
 
         createCircles();
+
+        // Create particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                // Random position
+                particle.style.left = `${Math.random() * 100}vw`;
+                
+                // Random delay
+                particle.style.animationDelay = `${Math.random() * 20}s`;
+                
+                // Random size
+                const size = Math.random() * 3;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Random opacity
+                particle.style.opacity = Math.random() * 0.5 + 0.5;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        createParticles();
     </script>
 </body>
 </html> 
