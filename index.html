@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to My Test Site</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(-45deg, #1a0000, #300, #600, #900);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .intro-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            animation: introFade 2s forwards 4s;
+        }
+
+        .intro-text {
+            color: #ff0000;
+            font-size: 3em;
+            text-transform: uppercase;
+            letter-spacing: 15px;
+            position: relative;
+            animation: glitch 0.5s infinite, introTextFade 2s forwards 3s;
+        }
+
+        .intro-text::before,
+        .intro-text::after {
+            content: 'INITIALIZING';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.8;
+        }
+
+        .intro-text::before {
+            color: #0ff;
+            animation: glitch-anim 2s infinite linear alternate-reverse;
+            left: 2px;
+        }
+
+        .intro-text::after {
+            color: #f0f;
+            animation: glitch-anim2 2s infinite linear alternate-reverse;
+            left: -2px;
+        }
+
+        @keyframes introFade {
+            0% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+            100% {
+                opacity: 0;
+                visibility: hidden;
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes introTextFade {
+            0% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(1.5);
+            }
+        }
+
+        @keyframes glitch {
+            0% {
+                text-shadow: 3px 0 #ff0000, -3px 0 #0000ff;
+                transform: translate(0);
+            }
+            25% {
+                text-shadow: -3px 0 #ff0000, 3px 0 #0000ff;
+                transform: translate(2px, 2px);
+            }
+            50% {
+                text-shadow: 3px 0 #ff0000, -3px 0 #0000ff;
+                transform: translate(-2px, -2px);
+            }
+            75% {
+                text-shadow: -3px 0 #ff0000, 3px 0 #0000ff;
+                transform: translate(-2px, 2px);
+            }
+            100% {
+                text-shadow: 3px 0 #ff0000, -3px 0 #0000ff;
+                transform: translate(0);
+            }
+        }
+
+        @keyframes glitch-anim {
+            0% {
+                clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+                transform: translate(-4px);
+            }
+            50% {
+                clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+                transform: translate(4px);
+            }
+            100% {
+                clip-path: polygon(0 85%, 100% 85%, 100% 100%, 0 100%);
+                transform: translate(0);
+            }
+        }
+
+        @keyframes glitch-anim2 {
+            0% {
+                clip-path: polygon(0 40%, 100% 40%, 100% 75%, 0 75%);
+                transform: translate(4px);
+            }
+            50% {
+                clip-path: polygon(0 15%, 100% 15%, 100% 60%, 0 60%);
+                transform: translate(-4px);
+            }
+            100% {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+                transform: translate(0);
+            }
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .container {
+            text-align: center;
+            color: #fff;
+            opacity: 0;
+            animation: mainContentFade 2s forwards 5s;
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes mainContentFade {
+            to {
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            font-size: 4em;
+            margin: 0;
+            padding: 0;
+            text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
+            animation: glow 2s ease-in-out infinite alternate, textFloat 3s ease-in-out infinite;
+            position: relative;
+        }
+
+        h1::before {
+            content: 'Welcome to My Site';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            color: #ff0000;
+            filter: blur(15px);
+            opacity: 0.5;
+            animation: glowPulse 2s infinite alternate;
+        }
+
+        @keyframes glowPulse {
+            from {
+                filter: blur(15px);
+                opacity: 0.5;
+            }
+            to {
+                filter: blur(20px);
+                opacity: 0.8;
+            }
+        }
+
+        @keyframes textFloat {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .subtitle {
+            font-size: 1.5em;
+            margin-top: 20px;
+            color: #ff3333;
+            position: relative;
+            animation: subtitleSlide 1s forwards 5.5s, subtitleGlow 3s infinite alternate;
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+
+        @keyframes subtitleSlide {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes subtitleGlow {
+            from {
+                text-shadow: 0 0 5px #ff3333, 0 0 10px #ff3333;
+            }
+            to {
+                text-shadow: 0 0 10px #ff3333, 0 0 20px #ff3333, 0 0 30px #ff3333;
+            }
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 0, 0, 0.1);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
+            animation: float 6s infinite;
+            pointer-events: none;
+            backdrop-filter: blur(5px);
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(1);
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg) scale(1.1);
+            }
+            100% {
+                transform: translateY(0) rotate(360deg) scale(1);
+            }
+        }
+
+        .scanline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom,
+                transparent 50%,
+                rgba(255, 0, 0, 0.02) 50%
+            );
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .vignette {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(
+                circle,
+                transparent 50%,
+                rgba(0, 0, 0, 0.5) 150%
+            );
+            pointer-events: none;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="intro-overlay">
+        <div class="intro-text">INITIALIZING</div>
+    </div>
+
+    <div class="container">
+        <h1>Welcome to My Site</h1>
+        <div class="subtitle">A Test Site for Publishing</div>
+    </div>
+
+    <script>
+        // Create floating circles
+        function createCircles() {
+            for (let i = 0; i < 15; i++) {
+                const circle = document.createElement('div');
+                circle.className = 'circle';
+                
+                // Random size between 20px and 100px
+                const size = Math.random() * 80 + 20;
+                circle.style.width = `${size}px`;
+                circle.style.height = `${size}px`;
+                
+                // Random position
+                circle.style.left = `${Math.random() * 100}vw`;
+                circle.style.top = `${Math.random() * 100}vh`;
+                
+                // Random animation delay
+                circle.style.animationDelay = `${Math.random() * 5}s`;
+                
+                // Add random red tint
+                const redOpacity = Math.random() * 0.2;
+                circle.style.backgroundColor = `rgba(255, 0, 0, ${redOpacity})`;
+                
+                document.body.appendChild(circle);
+            }
+        }
+
+        createCircles();
+    </script>
+</body>
+</html> 
